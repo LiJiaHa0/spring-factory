@@ -8,6 +8,7 @@ package com.ljh.study.factory.abstractfactory;
 public class BarcelonaTeamFactoryTest {
 
     public static void main(String[] args) {
+        //创建一个产品工厂
         FootballTeamFactory factory = new BarcelonaTeamFactory();
         factory.createTeam().game();
         factory.createWomanTeam();
