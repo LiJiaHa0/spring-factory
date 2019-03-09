@@ -6,6 +6,10 @@ import com.ljh.study.factory.FootballTeam;
 
 /**
  * @description: 简单工厂测试类
+ * 简单工厂负责创建的对象较少
+ * 客户端只需要传入工厂类的参数，对于如何创建对象的逻辑不需要关心
+ * 缺点：工厂类的职责相对过重，增加新的产品时需要修改工厂类的判断逻辑，违背开闭原则
+ * 不易于扩展过于复杂的产品结构
  * @author: Jh Lee
  * @create: 2019-03-09 00:24
  **/
@@ -15,20 +19,20 @@ public class SimpleFactoryTest {
         //
         FootballTeamFactory footballTeamFactory = new FootballTeamFactory();
 
-        FootballTeam footballTeam = footballTeamFactory.create("Barcelona");
+        FootballTeam footballTeam = footballTeamFactory.createByName("barcelona");
         footballTeam.game();
-        FootballTeam realMadrid = footballTeamFactory.create("realMadrid");
+        FootballTeam realMadrid = footballTeamFactory.createByName("realMadrid");
         realMadrid.game();
 
-        FootballTeam barcelonaTeam = footballTeamFactory.create2("com.ljh.study.simplefactory.BarcelonaTeam");
+        FootballTeam barcelonaTeam = footballTeamFactory.createByClassName("com.ljh.study.simplefactory.BarcelonaTeam");
         barcelonaTeam.game();
-        FootballTeam realMadridTeam = footballTeamFactory.create2("com.ljh.study.simplefactory.RealMadridTeam");
+        FootballTeam realMadridTeam = footballTeamFactory.createByClassName("com.ljh.study.simplefactory.RealMadridTeam");
         realMadridTeam.game();
 
-        FootballTeam barcelonaTeam1 = footballTeamFactory.create3(BarcelonaTeam.class);
+        FootballTeam barcelonaTeam1 = footballTeamFactory.createByClazz(BarcelonaTeam.class);
         barcelonaTeam1.game();
 
-        FootballTeam realMadridTeam1 = footballTeamFactory.create3(RealMadridTeam.class);
+        FootballTeam realMadridTeam1 = footballTeamFactory.createByClazz(RealMadridTeam.class);
         realMadridTeam1.game();
     }
 }

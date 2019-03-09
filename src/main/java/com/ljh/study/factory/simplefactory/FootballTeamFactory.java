@@ -5,7 +5,12 @@ import com.ljh.study.factory.RealMadridTeam;
 import com.ljh.study.factory.FootballTeam;
 
 /**
- * @description: 创建足球队的工厂
+ * @description: 设计模式-简单工厂模式，创建足球队的工厂
+ *
+ * 简单工厂负责创建的对象较少
+ * 客户端只需要传入工厂类的参数，对于如何创建对象的逻辑不需要关心
+ * 缺点：工厂类的职责相对过重，增加新的产品时需要修改工厂类的判断逻辑，违背开闭原则
+ * 不易于扩展过于复杂的产品结构
  * @author: Jh Lee
  * @create: 2019-03-09 00:23
  **/
@@ -16,8 +21,8 @@ public class FootballTeamFactory {
      * @param name
      * @return
      */
-    public FootballTeam create(String name){
-        if("Barcelona".equals(name)){
+    public FootballTeam createByName(String name){
+        if("barcelona".equals(name)){
             return new BarcelonaTeam();
         }else if("realMadrid".equals(name)){
             return new RealMadridTeam();
@@ -32,7 +37,7 @@ public class FootballTeamFactory {
      * @param className
      * @return
      */
-    public FootballTeam create2(String className){
+    public FootballTeam createByClassName(String className){
         try{
             if(!(null == className || "".equals(className))){
                 return (FootballTeam)Class.forName(className).newInstance();
@@ -43,7 +48,12 @@ public class FootballTeamFactory {
         return null;
     }
 
-    public FootballTeam create3(Class clazz){
+    /**
+     * 根据足球队的class对象来创建指定的足球队
+     * @param clazz
+     * @return
+     */
+    public FootballTeam createByClazz(Class clazz){
         try{
             if(null != clazz){
                 return (FootballTeam)clazz.newInstance();
