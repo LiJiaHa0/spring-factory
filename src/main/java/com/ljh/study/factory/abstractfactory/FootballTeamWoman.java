@@ -7,5 +7,6 @@ package com.ljh.study.factory.abstractfactory;
  **/
 public interface FootballTeamWoman {
 
-
+    //每个足球队比赛
+    public void game();
 }

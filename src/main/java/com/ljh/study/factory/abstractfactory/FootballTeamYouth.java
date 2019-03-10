@@ -6,4 +6,6 @@ package com.ljh.study.factory.abstractfactory;
  * @create: 2019-03-09 01:44
  **/
 public interface FootballTeamYouth {
+    //每个足球队比赛
+    public void game();
 }

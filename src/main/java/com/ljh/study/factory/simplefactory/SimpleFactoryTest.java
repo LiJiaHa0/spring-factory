@@ -16,22 +16,24 @@ import com.ljh.study.factory.FootballTeam;
 public class SimpleFactoryTest {
 
     public static void main(String[] args) {
-        //
+        //创建一个足球队制造的工厂，我们需要创建足球，直接传入我们相对应的参数
         FootballTeamFactory footballTeamFactory = new FootballTeamFactory();
 
-        FootballTeam footballTeam = footballTeamFactory.createByName("barcelona");
-        footballTeam.game();
-        FootballTeam realMadrid = footballTeamFactory.createByName("realMadrid");
-        realMadrid.game();
+        //使用足球队名称来创建
+        FootballTeam barcelonaByName = footballTeamFactory.createByName("barcelona");
+        barcelonaByName.game();
+        FootballTeam realMadridByName = footballTeamFactory.createByName("realMadrid");
+        realMadridByName.game();
 
-        FootballTeam barcelonaTeam = footballTeamFactory.createByClassName("com.ljh.study.simplefactory.BarcelonaTeam");
-        barcelonaTeam.game();
-        FootballTeam realMadridTeam = footballTeamFactory.createByClassName("com.ljh.study.simplefactory.RealMadridTeam");
-        realMadridTeam.game();
+        //使用足球队的包名+类名来创建
+        FootballTeam barcelonaByClassName = footballTeamFactory.createByClassName("com.ljh.study.simplefactory.BarcelonaTeam");
+        barcelonaByClassName.game();
+        FootballTeam realMadridByClassName = footballTeamFactory.createByClassName("com.ljh.study.simplefactory.RealMadridTeam");
+        realMadridByClassName.game();
 
+        //使用足球队的class对象来创建
         FootballTeam barcelonaTeam1 = footballTeamFactory.createByClazz(BarcelonaTeam.class);
         barcelonaTeam1.game();
-
         FootballTeam realMadridTeam1 = footballTeamFactory.createByClazz(RealMadridTeam.class);
         realMadridTeam1.game();
     }
